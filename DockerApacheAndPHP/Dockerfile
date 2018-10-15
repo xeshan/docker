@@ -5,7 +5,7 @@ RUN apt-get update
 RUN apt-get -y upgrade
 
 # Install apache, PHP, and supplimentary programs. curl and lynx-cur are for debugging the container.
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y install apache2 curl lynx-cur libapache2-mod-php7.0 php7.0-mysql php7.0-gd php7.0-curl php7.0-ldap
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install apache2 curl lynx-cur php7.0-cli libapache2-mod-php7.0 php7.0-mysql php7.0-gd php7.0-curl php7.0-ldap
 
 # Enable apache mods.
 RUN a2enmod rewrite
