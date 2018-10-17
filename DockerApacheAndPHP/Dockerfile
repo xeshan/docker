@@ -1,5 +1,4 @@
 FROM ubuntu:latest
-MAINTAINER ze <za@innovabe.com>
 
 RUN apt-get update
 RUN apt-get -y upgrade
