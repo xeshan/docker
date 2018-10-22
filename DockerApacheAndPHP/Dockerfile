@@ -1,18 +1,17 @@
 FROM ubuntu:latest
-MAINTAINER ze <za@innovabe.com>
 
 RUN apt-get update
 RUN apt-get -y upgrade
 
 # Install apache, PHP, and supplimentary programs. curl and lynx-cur are for debugging the container.
-RUN DEBIAN_FRONTEND=noninteractive apt-get -y install apache2 curl lynx-cur php7.0-cli libapache2-mod-php7.0 php7.0-mysql php7.0-gd php7.0-curl php7.0-ldap
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install apache2 php
 
 # Enable apache mods.
 RUN a2enmod rewrite
 
 # Update the PHP.ini file, enable <? ?> tags and quieten logging.
-RUN sed -i "s/short_open_tag = Off/short_open_tag = On/" /etc/php/7.0/apache2/php.ini 
-RUN sed -i "s/error_reporting = .*$/error_reporting = E_ERROR | E_WARNING | E_PARSE/" /etc/php/7.0/apache2/php.ini 
+RUN sed -i "s/short_open_tag = Off/short_open_tag = On/" /etc/php/7.2/apache2/php.ini 
+RUN sed -i "s/error_reporting = .*$/error_reporting = E_ERROR | E_WARNING | E_PARSE/" /etc/php/7.2/apache2/php.ini 
 
 # Manually set up the apache environment variables
 ENV APACHE_RUN_USER www-data
